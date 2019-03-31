@@ -1,0 +1,6 @@
+html, body {
+  background-color: rgb(50, 50, 52);
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
