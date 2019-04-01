@@ -1,4 +1,4 @@
-let x, y, f1, f2, f3, w1;
+let pos, x, y, f1, f2, f3, w1;
 
 const getRandom = (min, max) => {
   return Math.random() * (max - min) + min;
@@ -50,6 +50,8 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   x = windowWidth / 2;
   y = windowHeight / 2;
+  pos = createVector(windowWidth / 2, windowHeight / 2);
+  console.log(pos);
 
   const vw = windowWidth / 4;
   const vh = windowHeight / 4;
@@ -58,7 +60,7 @@ function setup() {
   f2 = new Food(getRandom(x - vw, x + vw), getRandom(y - vh, y + vh));
   f3 = new Food(getRandom(x - vw, x + vw), getRandom(y - vh, y + vh));
 
-  w1 = new Walker(x, y);
+  w1 = new Walker(pos.x, pos.y);
 }
 
 function windowResized() {
