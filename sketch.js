@@ -31,21 +31,18 @@ Walker.prototype.display = function() {
 }
 
 Walker.prototype.walk = function() {
-  let r = random([0, 1, 2, 3]);
+  let r = random(1);
 
-  switch (r) {
-    case 0:
-      this.wX = this.wX + random(3);
-      break;
-    case 1:
-      this.wX = this.wX - random(3);
-      break;
-    case 2:
-      this.wY = this.wY + random(3);
-      break;
-    default:
-      this.wY = this.wY - random(3);
-      break;
+  if (r < 0.8) {
+    /* empty statement */
+  } else if (r < 0.85) {
+    this.wX = this.wX + floor(random(4));
+  } else if (r < 0.9) {
+    this.wX = this.wX - floor(random(4));
+  } else if (r < 0.95) {
+    this.wY = this.wY + floor(random(4));
+  } else {
+    this.wY = this.wY - floor(random(4));
   }
 }
 
