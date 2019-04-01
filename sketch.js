@@ -1,4 +1,4 @@
-let pos, x, y, f1, f2, f3, w1;
+let pos, prev, x, y, f1, f2, f3, w1;
 
 const getRandom = (min, max) => {
   return Math.random() * (max - min) + min;
@@ -42,7 +42,11 @@ Walker.prototype.walk = function() {
     step.setMag(3);
   }
 
-  pos.add(step);
+  if (pos !== prev) {
+    pos.add(step);
+  } else {
+    prev.set(pos);
+  }
 }
 
 function setup() {
@@ -50,6 +54,7 @@ function setup() {
   x = windowWidth / 2;
   y = windowHeight / 2;
   pos = createVector(windowWidth / 2, windowHeight / 2);
+  prev = pos.copy();
 
   const vw = windowWidth / 4;
   const vh = windowHeight / 4;
