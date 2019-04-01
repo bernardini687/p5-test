@@ -31,19 +31,18 @@ Walker.prototype.display = function() {
 }
 
 Walker.prototype.walk = function() {
+  let step = p5.Vector.random2D();
   let r = random(1);
 
-  if (r < 0.8) {
-    /* empty statement */
-  } else if (r < 0.85) {
-    this.wX = this.wX + floor(random(4));
+  if (r < 0.85) {
+    step.mult(0);
   } else if (r < 0.9) {
-    this.wX = this.wX - floor(random(4));
-  } else if (r < 0.95) {
-    this.wY = this.wY + floor(random(4));
+    step.mult(random(15, 30));
   } else {
-    this.wY = this.wY - floor(random(4));
+    step.setMag(3);
   }
+
+  pos.add(step);
 }
 
 function setup() {
@@ -51,7 +50,6 @@ function setup() {
   x = windowWidth / 2;
   y = windowHeight / 2;
   pos = createVector(windowWidth / 2, windowHeight / 2);
-  console.log(pos);
 
   const vw = windowWidth / 4;
   const vh = windowHeight / 4;
@@ -59,8 +57,6 @@ function setup() {
   f1 = new Food(getRandom(x - vw, x + vw), getRandom(y - vh, y + vh));
   f2 = new Food(getRandom(x - vw, x + vw), getRandom(y - vh, y + vh));
   f3 = new Food(getRandom(x - vw, x + vw), getRandom(y - vh, y + vh));
-
-  w1 = new Walker(pos.x, pos.y);
 }
 
 function windowResized() {
@@ -74,6 +70,7 @@ function draw() {
   f2.display();
   f3.display();
 
+  w1 = new Walker(pos.x, pos.y);
   w1.display();
   w1.walk();
 }
