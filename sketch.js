@@ -36,10 +36,11 @@ Walker.prototype.walk = function() {
 
   if (r < 0.85) {
     step.mult(0);
-  } else if (r < 0.9) {
-    step.mult(random(15, 30));
+  } else if (r < 0.98) {
+    // step.setMag(9);
+    step.mult(random(2, 6));
   } else {
-    step.setMag(3);
+    step.mult(random(20, 60));
   }
 
   if (pos !== prev) {
